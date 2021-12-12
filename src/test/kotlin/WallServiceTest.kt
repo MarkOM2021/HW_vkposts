@@ -8,15 +8,9 @@ class WallServiceTest {
     fun addedPostIDIsNotZero() {
         val service = WallService()
         val post = Post(
-                0, 589, 101, 5656, 11, "hello all!", 0,
-                0, true, "text", 679, true, true,
-                true, false, false, true, 397,
-                Comments(1, true, true, true, true),
-                Copyright(12, "https://vk.com/natgeoru", "nat_geo", "publication"),
-                likes = Likes(0, true, canLike = true, canPublish = true),
-                reposts = Reposts(0, true), Views(1),
-                Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
-            )
+                0, 589, 101,0, comments = Comments(),
+                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
 
         val result = service.add(post)
         assertEquals(post, result)
@@ -27,40 +21,24 @@ class WallServiceTest {
         val service = WallService()
         service.add(
             Post(
-                354, 456, 111, 376, 9, "hello!", 1,
-                0, true, "text", 679, true, true,
-                true, false, false, true, 397,
-                Comments(1, true, true, true, true),
-                Copyright(12, "https://vk.com/natgeoru?w=wall-24565142_1665129", "nat_geo_ru", "publication"),
-                likes = Likes(0, true, canLike = true, canPublish = true),
-                reposts = Reposts(0, true), Views(1),
-                Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
-            )
+                578, 600, 101,0, comments = Comments(),
+                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
         )
         service.add(
             Post(
-                543, 589, 101, 5656, 11, "hello all!", 0,
-                0, true, "text", 679, true, true,
-                true, false, false, true, 397,
-                Comments(1, true, true, true, true),
-                Copyright(12, "https://vk.com/natgeoru", "nat_geo", "publication"),
-                likes = Likes(0, true, canLike = true, canPublish = true),
-                reposts = Reposts(0, true), Views(1),
-                Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
-            )
-        )
-        val updateSuccessfull = Post(
-            2, 600, 102, 5656, 11, "hello all!", 0,
-            0, true, "text", 679, true, true,
-            true, false, false, true, 397,
-            Comments(1, true, true, true, true),
-            Copyright(12, "https://vk.com/natgeoru", "nat_geo", "publication"),
-            likes = Likes(0, true, canLike = true, canPublish = true),
-            reposts = Reposts(0, true), Views(1),
-            Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
+                579, 605, 101,0, comments = Comments(),
+                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
         )
 
-        val resultSuccess = service.update(updateSuccessfull)
+        val updateSuccess = Post(
+            1, 654, 112,1, comments = Comments(),
+            copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+            views = Views(), donut = Donut(placeHolder = PlaceHolder())
+        )
+
+        val resultSuccess = service.update(updateSuccess)
 
         assertTrue(resultSuccess)
     }
@@ -70,38 +48,21 @@ class WallServiceTest {
         val service = WallService()
         service.add(
             Post(
-                354, 456, 111, 376, 9, "hello!", 1,
-                0, true, "text", 679, true, true,
-                true, false, false, true, 397,
-                Comments(1, true, true, true, true),
-                Copyright(12, "https://vk.com/natgeoru?w=wall-24565142_1665129", "nat_geo_ru", "publication"),
-                likes = Likes(0, true, canLike = true, canPublish = true),
-                reposts = Reposts(0, true), Views(1),
-                Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
-            )
+                578, 600, 101,0, comments = Comments(),
+                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
         )
         service.add(
             Post(
-                543, 589, 101, 5656, 11, "hello all!", 0,
-                0, true, "text", 679, true, true,
-                true, false, false, true, 397,
-                Comments(1, true, true, true, true),
-                Copyright(12, "https://vk.com/natgeoru", "nat_geo", "publication"),
-                likes = Likes(0, true, canLike = true, canPublish = true),
-                reposts = Reposts(0, true), Views(1),
-                Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
-            )
+                579, 605, 101,0, comments = Comments(),
+                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
         )
 
         val updateFailing = Post(
-            543, 600, 102, 5656, 11, "hello all!", 0,
-            0, true, "text", 679, true, true,
-            true, false, false, true, 397,
-            Comments(1, true, true, true, true),
-            Copyright(12, "https://vk.com/natgeoru", "nat_geo", "publication"),
-            likes = Likes(0, true, canLike = true, canPublish = true),
-            reposts = Reposts(0, true), Views(1),
-            Donut(false, 0, PlaceHolder("Is not in VK Donut system"), true, "all")
+            3, 654, 112,1, comments = Comments(),
+            copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+            views = Views(), donut = Donut(placeHolder = PlaceHolder())
         )
 
         val resultFail = service.update(updateFailing)
