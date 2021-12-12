@@ -9,7 +9,7 @@ class WallService {
         return posts.last()
     }
 
-    fun update(post: Post): Boolean {
+    fun edit(post: Post): Boolean {
 
         for (i in posts.indices) {
             if (posts[i].id == post.id) {

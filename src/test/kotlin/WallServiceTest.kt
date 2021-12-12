@@ -17,7 +17,7 @@ class WallServiceTest {
     }
 
     @Test
-    fun updateDone() {
+    fun editionDone() {
         val service = WallService()
         service.add(
             Post(
@@ -38,13 +38,13 @@ class WallServiceTest {
             views = Views(), donut = Donut(placeHolder = PlaceHolder())
         )
 
-        val resultSuccess = service.update(updateSuccess)
+        val resultSuccess = service.edit(updateSuccess)
 
         assertTrue(resultSuccess)
     }
 
     @Test
-    fun updateFailed() {
+    fun editionFailed() {
         val service = WallService()
         service.add(
             Post(
@@ -65,7 +65,7 @@ class WallServiceTest {
             views = Views(), donut = Donut(placeHolder = PlaceHolder())
         )
 
-        val resultFail = service.update(updateFailing)
+        val resultFail = service.edit(updateFailing)
 
         assertFalse(resultFail)
     }
