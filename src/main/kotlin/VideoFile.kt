@@ -1,0 +1,21 @@
+data class VideoFile(
+    val id: Int = 0,
+    val ownerID: Int = 0,
+    val title: String = "No name",
+    val description: String = "no description",
+    val duration: Int = 0,
+    val date: Int = 0,
+    val addingDate: Int = 0,
+    val views: Int = 0,
+    val comments: Int = 0,
+    val player: String = "url",
+    val width: Int = 0,
+    val height: Int = 0,
+    val userID: Int = 0,
+    val converting: Boolean = false,
+    val added: Boolean = false,
+    val repeat: Boolean = true,
+    val live: Boolean = false,
+    val likes: Int = 0,
+    val url: String = "url"
+)
