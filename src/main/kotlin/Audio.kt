@@ -1,4 +1,4 @@
-abstract class Audio : Attachment {
+sealed class Audio : Attachment {
     override val type = "audio"
     abstract val audioTrack: Array<AudioTrack>
 }
