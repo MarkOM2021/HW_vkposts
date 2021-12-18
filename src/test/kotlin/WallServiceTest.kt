@@ -8,9 +8,11 @@ class WallServiceTest {
     fun addedPostIDIsNotZero() {
         val service = WallService()
         val post = Post(
-                0, 589, 101,0, comments = Comments(),
-                copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
+            0, 589, 101, 0, postSource = PostSource(),
+            geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
+            copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+            views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+        )
 
         val result = service.add(post)
         assertEquals(post, result)
@@ -21,21 +23,26 @@ class WallServiceTest {
         val service = WallService()
         service.add(
             Post(
-                578, 600, 101,0, comments = Comments(),
+                578, 600, 101, 0, postSource = PostSource(),
+                geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
                 copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+            )
         )
         service.add(
             Post(
-                579, 605, 101,0, comments = Comments(),
+                579, 605, 101, 0, postSource = PostSource(),
+                geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
                 copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+            )
         )
 
         val updateSuccess = Post(
-            1, 654, 112,1, comments = Comments(),
+            1, 654, 112, 1, postSource = PostSource(),
+            geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
             copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-            views = Views(), donut = Donut(placeHolder = PlaceHolder())
+            views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
         )
 
         val resultSuccess = service.edit(updateSuccess)
@@ -48,21 +55,26 @@ class WallServiceTest {
         val service = WallService()
         service.add(
             Post(
-                578, 600, 101,0, comments = Comments(),
+                578, 600, 101, 0, postSource = PostSource(),
+                geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
                 copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+            )
         )
         service.add(
             Post(
-                579, 605, 101,0, comments = Comments(),
+                579, 605, 101, 0, postSource = PostSource(),
+                geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
                 copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-                views = Views(), donut = Donut(placeHolder = PlaceHolder()))
+                views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+            )
         )
 
         val updateFailing = Post(
-            3, 654, 112,1, comments = Comments(),
+            3, 654, 112, 1, postSource = PostSource(),
+            geo = Geo(place = Place()), copyHistory = null, comments = Comments(),
             copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-            views = Views(), donut = Donut(placeHolder = PlaceHolder())
+            views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
         )
 
         val resultFail = service.edit(updateFailing)
