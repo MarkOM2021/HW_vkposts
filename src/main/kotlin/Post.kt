@@ -12,7 +12,7 @@ data class Post(
     val postSource: PostSource,
     val geo: Geo,
     val signerID: Int = 0,
-    var copyHistory: CopyHistory?,
+    val copyHistory: CopyHistory?,
     val canPin: Boolean = false,
     val canDelete: Boolean = false,
     val canEdit: Boolean = false,
@@ -20,13 +20,13 @@ data class Post(
     val markAsAbs: Boolean = false,
     val isFavourite: Boolean = false,
     val postponedID: Int = 0,
-    val comments: Comments,
+    val comments: Comment,
     val copyright: Copyright,
     val likes: Likes,
     val reposts: Reposts,
     val views: Views,
     val donut: Donut,
-    var attachments: Array<Attachment>?
+    val attachments: Array<Attachment>?
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
