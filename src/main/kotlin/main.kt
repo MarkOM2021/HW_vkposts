@@ -5,8 +5,9 @@ class WallService {
     private var comments = emptyArray<Comment>()
 
     fun add(post: Post): Post {
-        post.id = if (posts.isEmpty()) 1 else posts.last().id + 1
-        posts += post
+
+        val postCopy = post.copy(id = if (posts.isEmpty()) 1 else posts.last().id + 1)
+        posts += postCopy
         return posts.last()
     }
 
@@ -32,3 +33,25 @@ class WallService {
         }
     }
 }
+
+/*fun main() {
+val post1 = Post(578, 600, 101, 0, postSource = PostSource(),
+geo = Geo(place = Place()), copyHistory = null,
+comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
+parentsStack = null, attachment = null, thread = Thread()),
+copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null)
+
+val post2 = Post(
+579, 605, 101, 0, postSource = PostSource(),
+geo = Geo(place = Place()), copyHistory = null,
+comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
+parentsStack = null, attachment = null, thread = Thread()),
+copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+)
+
+var service = WallService()
+    println(service.add(post1))
+    println(service.add(post2))
+}*/
