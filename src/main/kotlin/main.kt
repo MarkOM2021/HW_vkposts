@@ -22,36 +22,15 @@ class WallService {
         return false
     }
 
-    fun createComment(comment: Comment) {
+    fun createComment(comment: Comment): Comment {
         for (i in posts.indices) {
             val id = comment.id
-            if (id == posts[i].id) {
-                comments += comment
-            } else {
+            if (id != posts[i].id) {
                 throw PostNotFoundException("no post with id $id exists")
+            } else {
+                comments += comment
             }
         }
+        return comments.last()
     }
 }
-
-/*fun main() {
-val post1 = Post(578, 600, 101, 0, postSource = PostSource(),
-geo = Geo(place = Place()), copyHistory = null,
-comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
-parentsStack = null, attachment = null, thread = Thread()),
-copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null)
-
-val post2 = Post(
-579, 605, 101, 0, postSource = PostSource(),
-geo = Geo(place = Place()), copyHistory = null,
-comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
-parentsStack = null, attachment = null, thread = Thread()),
-copyright = Copyright(), likes = Likes(), reposts = Reposts(),
-views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
-)
-
-var service = WallService()
-    println(service.add(post1))
-    println(service.add(post2))
-}*/

@@ -97,7 +97,7 @@ class WallServiceTest {
     }
 
     @Test(expected = PostNotFoundException::class)
-    fun shouldThrow() {
+    fun getExceptionAtCommentCreation() {
         val service = WallService()
         val post1 = Post(
             0, 589, 101, 0, postSource = PostSource(),
@@ -129,5 +129,40 @@ class WallServiceTest {
 
         val result = service.createComment(comment1)
         assertEquals("no post with id 4 exists", result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun getCommentCreated() {
+        val service = WallService()
+        val post1 = Post(
+            0, 589, 101, 0, postSource = PostSource(),
+            geo = Geo(place = Place()), copyHistory = null,
+            comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
+                parentsStack = null, attachment = null, thread = Thread()
+            ),
+            copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+            views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+        )
+        val post2 = Post(
+            333, 404, 101, 0, postSource = PostSource(),
+            geo = Geo(place = Place()), copyHistory = null,
+            comments = Comment(donut = Donut(placeHolder = PlaceHolder()),
+                parentsStack = null, attachment = null, thread = Thread()
+            ),
+            copyright = Copyright(), likes = Likes(), reposts = Reposts(),
+            views = Views(), donut = Donut(placeHolder = PlaceHolder()), attachments = null
+        )
+        val comment1 = Comment(
+            id = 1,
+            donut = Donut(placeHolder = PlaceHolder()),
+            attachment = null,
+            parentsStack = null,
+            thread = Thread()
+        )
+        service.add(post1)
+        service.add(post2)
+
+        val result = service.createComment(comment1)
+        assertEquals(comment1, result)
     }
 }
